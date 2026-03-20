@@ -113,7 +113,7 @@ app.post("/alexa", async (req, res) => {
     const requestType = req.body.request.type;
 
     if (requestType === "LaunchRequest") {
-      return res.json(alexaResponse("تم تشغيل المساعد. قل: اسأل ثم سؤالك.", false));
+      return res.json(alexaResponse("تم تشغيل المساعد. اسأل سؤالك.", false));
     }
 
     if (requestType === "IntentRequest") {
@@ -131,7 +131,7 @@ app.post("/alexa", async (req, res) => {
         const userText = getSlotValue(req, "query");
 
         if (!userText) {
-          return res.json(alexaResponse("لم أسمع السؤال بوضوح. قل: اسأل ثم سؤالك.", false));
+          return res.json(alexaResponse("لم أسمع السؤال بوضوح. اسأل سؤالك مرة أخرى.", false));
         }
 
         const aiReply = await askOpenAI(userText);
